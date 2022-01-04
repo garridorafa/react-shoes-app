@@ -3,6 +3,7 @@ import "./App.css";
 import Footer from "./Footer";
 import Header from "./Header";
 import { getProducts } from "./services/productService.js";
+import Spinner from "./Spinner";
 
 export default function App() {
   const [size, setSize] = useState("");
@@ -11,9 +12,10 @@ export default function App() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    getProducts("shoes")
+    getProducts("gaps")
       .then((res) => setProducts(res))
-      .catch((e) => setError(e));
+      .catch((e) => setError(e))
+      .finally(() => setLoading(false));
   }, []);
 
   const renderProduct = (p) => (
@@ -33,6 +35,7 @@ export default function App() {
     : products;
 
   if (error) throw error;
+  if (loading) return <Spinner />;
 
   return (
     <>
