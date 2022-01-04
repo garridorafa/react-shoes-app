@@ -1,22 +1,18 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import "./App.css";
 import Footer from "./Footer";
 import Header from "./Header";
-import { getProducts } from "./services/productService.js";
 import Spinner from "./Spinner";
+import useFetch from "./services/useFetch";
 
 export default function App() {
   const [size, setSize] = useState("");
-  const [products, setProducts] = useState([]);
-  const [error, setError] = useState(null);
-  const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
-    getProducts("gaps")
-      .then((res) => setProducts(res))
-      .catch((e) => setError(e))
-      .finally(() => setLoading(false));
-  }, []);
+  const {
+    data: products,
+    error,
+    loading,
+  } = useFetch("products?category=shoes");
 
   const renderProduct = (p) => (
     <div key={p.id} className="product">
