@@ -1,7 +1,7 @@
-import React, { useEffect, useReducer } from "react";
+import React, { useContext, useEffect, useReducer } from "react";
 import cartReducer from "./cartReducer";
 
-export const CartContext = React.createContext(null);
+const CartContext = React.createContext(null);
 
 let initialCart;
 try {
@@ -21,4 +21,12 @@ export function CartProvider({ children }) {
   return (
     <CartContext.Provider value={contextValue}>{children}</CartContext.Provider>
   );
+}
+
+export function useCart() {
+  const context = useContext(CartContext);
+  if (!context) {
+    throw new Error("useCart must be used within a CardProvider.");
+  }
+  return context;
 }
