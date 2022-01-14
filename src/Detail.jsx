@@ -1,10 +1,12 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { useParams, useNavigate } from "react-router-dom";
+import { CartContext } from "./cartContext";
 import PageNotFound from "./PageNotFound";
 import useFetch from "./services/useFetch";
 import Spinner from "./Spinner";
 
-export default function Detail({ dispatch }) {
+export default function Detail() {
+  const { dispatch } = useContext(CartContext);
   const { id } = useParams();
   const navigate = useNavigate();
   const [sku, setSku] = useState("");
