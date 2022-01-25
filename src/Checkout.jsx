@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import Button from "./Button";
 import { useCart } from "./cartContext";
 import { saveShippingAddress } from "./services/shippingService";
 
@@ -123,10 +124,8 @@ export default function Checkout() {
         </div>
 
         <div>
-          <input
-            type="submit"
-            className="btn btn-primary"
-            value="Save Shipping Info"
+          <Button
+            label="Save Shipping Info"
             disabled={status === STATUS.SUBMITTING}
           />
         </div>

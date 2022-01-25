@@ -1,13 +1,10 @@
-.btn-primary {
-  color: #fff;
-  background-color: #364147;
-}
-
 .btn {
   display: inline-block;
+  background-color: rgb(144, 202, 255);
   margin-bottom: 0;
   font-weight: 400;
   text-align: center;
+  text-transform: uppercase;
   vertical-align: middle;
   -ms-touch-action: manipulation;
   touch-action: manipulation;
@@ -15,9 +12,9 @@
   background-image: none;
   border: 1px solid transparent;
   white-space: nowrap;
-  padding: 6px 12px;
+  padding: 12px 24px;
   font-size: 14px;
-  line-height: 1.42857143;
+  font-weight: bold;
   border-radius: 3px;
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -29,8 +26,13 @@
 .btn[disabled],
 fieldset[disabled] .btn {
   cursor: not-allowed;
-  opacity: 0.65;
-  filter: alpha(opacity=65);
+  opacity: 0.4;
+  filter: alpha(opacity=4);
   -webkit-box-shadow: none;
   box-shadow: none;
+}
+
+.btn-primary {
+  color: #fff;
+  background-color: rgb(4, 4, 122);
 }

@@ -1,21 +1,34 @@
 import React from "react";
 
-import Button from "./Button";
+import Button from "./";
 
 export default {
   title: "Example/Button",
   component: Button,
-  // More on argTypes: https://storybook.js.org/docs/react/api/argtypes
-  argTypes: {
-    backgroundColor: { control: "color" },
-  },
 };
 
 const Template = (args) => <Button {...args} />;
 
-export const PrimaryPOP = Template.bind({});
+export const Primary = Template.bind({});
 
-PrimaryPOP.args = {
+Primary.args = {
   primary: true,
   label: "Button",
+  disabled: false,
+};
+
+export const Secondary = Template.bind({});
+
+Secondary.args = {
+  primary: false,
+  label: "Button",
+  disabled: false,
+};
+
+export const Disable = Template.bind({});
+
+Disable.args = {
+  primary: false,
+  label: "Button",
+  disabled: true,
 };

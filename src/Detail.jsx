@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
+import Button from "./Button";
 import { useCart } from "./cartContext";
 import PageNotFound from "./PageNotFound";
 import useFetch from "./services/useFetch";
@@ -30,16 +31,15 @@ export default function Detail() {
         ))}
       </select>
       <p>
-        <button
-          className="btn btn-primary"
+        <Button
+          primary
           onClick={() => {
             dispatch({ type: "add", id, sku });
             navigate("/cart");
           }}
           disabled={!sku}
-        >
-          Add to cart
-        </button>
+          label="Add to cart"
+        />
       </p>
       <img src={`/images/${product.image}`} alt={product.category} />
     </div>
