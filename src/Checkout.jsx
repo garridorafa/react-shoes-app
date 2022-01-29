@@ -1,7 +1,9 @@
 import React, { useState } from "react";
+
+import { saveShippingAddress } from "./services/shippingService";
 import Button from "./Button";
 import { useCart } from "./cartContext";
-import { saveShippingAddress } from "./services/shippingService";
+import Select from "./Select";
 
 const STATUS = {
   IDLE: "IDLE",
@@ -106,18 +108,19 @@ export default function Checkout() {
         <div>
           <label htmlFor="country">Country</label>
           <br />
-          <select
+          <Select
             id="country"
+            label="Select Country"
             value={address.country}
+            choices={[
+              { id: "China", name: "China" },
+              { id: "India", name: "India" },
+              { id: "United Kingdom", name: "United Kingdom" },
+              { id: "USA", name: "USA" },
+            ]}
             onBlur={handleBlur}
             onChange={handleChange}
-          >
-            <option value="">Select Country</option>
-            <option value="China">China</option>
-            <option value="India">India</option>
-            <option value="United Kingdom">United Kingdom</option>
-            <option value="USA">USA</option>
-          </select>
+          />
           <p role="alert">
             {(touched.country || status === STATUS.SUBMITTED) && errors.country}
           </p>

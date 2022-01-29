@@ -5,6 +5,7 @@ import useFetchAll from "./services/useFetchAll";
 import { useCart } from "./cartContext";
 import Button from "./Button";
 import Spinner from "./Spinner";
+import Select from "./Select";
 
 export default function Cart() {
   const { cart, dispatch } = useCart();
@@ -27,8 +28,9 @@ export default function Cart() {
           <p>${price}</p>
           <p>Size: {size}</p>
           <p>
-            <select
-              aria-label={`Select quantity for ${name} size ${size}`}
+            <Select
+              label="Remove"
+              value={quantity}
               onChange={(e) =>
                 dispatch({
                   type: "updateQuantity",
@@ -36,15 +38,14 @@ export default function Cart() {
                   quantity: parseInt(e.target.value),
                 })
               }
-              value={quantity}
-            >
-              <option value="0">Remove</option>
-              <option value="1">1</option>
-              <option value="2">2</option>
-              <option value="3">3</option>
-              <option value="4">4</option>
-              <option value="5">5</option>
-            </select>
+              choices={[
+                { id: 1, name: "1" },
+                { id: 2, name: "2" },
+                { id: 3, name: "3" },
+                { id: 4, name: "4" },
+                { id: 5, name: "5" },
+              ]}
+            />
           </p>
         </div>
       </li>

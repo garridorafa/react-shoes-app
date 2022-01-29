@@ -1,8 +1,10 @@
 import React, { useState } from "react";
+import { Link, useParams } from "react-router-dom";
+
+import useFetch from "./services/useFetch";
 import PageNotFound from "./PageNotFound";
 import Spinner from "./Spinner";
-import useFetch from "./services/useFetch";
-import { Link, useParams } from "react-router-dom";
+import Select from "./Select";
 
 export default function App() {
   const [size, setSize] = useState("");
@@ -38,16 +40,16 @@ export default function App() {
     <>
       <section id="filters">
         <label htmlFor="size">Filter by Size:</label>{" "}
-        <select
-          id="size"
+        <Select
+          label="All sizes"
+          choices={[
+            { id: "7", name: 7 },
+            { id: "8", name: 8 },
+            { id: "9", name: 9 },
+          ]}
           value={size}
           onChange={(e) => setSize(e.target.value)}
-        >
-          <option value="">All sizes</option>
-          <option value="7">7</option>
-          <option value="8">8</option>
-          <option value="9">9</option>
-        </select>
+        />
         {size && <h2>Found {filterProducts.length} items</h2>}
       </section>
       <section id="products">{filterProducts.map(renderProduct)}</section>

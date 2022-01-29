@@ -1,9 +1,11 @@
 import React, { useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import Button from "./Button";
+
 import { useCart } from "./cartContext";
-import PageNotFound from "./PageNotFound";
 import useFetch from "./services/useFetch";
+import Button from "./Button";
+import PageNotFound from "./PageNotFound";
+import Select from "./Select";
 import Spinner from "./Spinner";
 
 export default function Detail() {
@@ -22,14 +24,11 @@ export default function Detail() {
       <h1>{product.name}</h1>
       <p>{product.description}</p>
       <p id="price">${product.price}</p>
-      <select id="size" value={sku} onChange={(e) => setSku(e.target.value)}>
-        <option value="">What size?</option>
-        {product.skus.map((s) => (
-          <option key={s.sku} value={s.sku}>
-            {s.size}
-          </option>
-        ))}
-      </select>
+      <Select
+        label="What size?"
+        choices={product.skus.map((s) => ({ id: s.sku, name: s.size }))}
+        onChange={(e) => setSku(e.target.value)}
+      />
       <p>
         <Button
           primary
