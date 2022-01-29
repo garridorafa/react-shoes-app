@@ -28,6 +28,13 @@ export default function Cart() {
     );
     const { size } = skus.find((s) => s.sku === sku);
 
+    const handleChange = (e) =>
+      dispatch({
+        type: "updateQuantity",
+        sku,
+        quantity: parseInt(e.target.value),
+      });
+
     return (
       <li key={sku} className="cart-item">
         <img src={`/images/${image}`} alt={name} />
@@ -39,13 +46,7 @@ export default function Cart() {
             <Select
               label="Remove"
               value={quantity}
-              onChange={(e) =>
-                dispatch({
-                  type: "updateQuantity",
-                  sku,
-                  quantity: parseInt(e.target.value),
-                })
-              }
+              onChange={handleChange}
               choices={AVAILABLE_QUANTITIES}
             />
           </p>
