@@ -6,6 +6,12 @@ import PageNotFound from "./PageNotFound";
 import Spinner from "./Spinner";
 import Select from "./Select";
 
+const AVAILABLE_SIZES = [
+  { id: "7", name: 7 },
+  { id: "8", name: 8 },
+  { id: "9", name: 9 },
+];
+
 export default function App() {
   const [size, setSize] = useState("");
   const { category } = useParams();
@@ -42,11 +48,7 @@ export default function App() {
         <label htmlFor="size">Filter by Size:</label>{" "}
         <Select
           label="All sizes"
-          choices={[
-            { id: "7", name: 7 },
-            { id: "8", name: 8 },
-            { id: "9", name: 9 },
-          ]}
+          choices={AVAILABLE_SIZES}
           value={size}
           onChange={(e) => setSize(e.target.value)}
         />

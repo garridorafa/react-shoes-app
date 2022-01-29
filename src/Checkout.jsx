@@ -17,6 +17,13 @@ const emptyAddress = {
   country: "",
 };
 
+const CITIES = [
+  { id: "China", name: "China" },
+  { id: "India", name: "India" },
+  { id: "United Kingdom", name: "United Kingdom" },
+  { id: "USA", name: "USA" },
+];
+
 export default function Checkout() {
   const { dispatch } = useCart();
   const [address, setAddress] = useState(emptyAddress);
@@ -112,12 +119,7 @@ export default function Checkout() {
             id="country"
             label="Select Country"
             value={address.country}
-            choices={[
-              { id: "China", name: "China" },
-              { id: "India", name: "India" },
-              { id: "United Kingdom", name: "United Kingdom" },
-              { id: "USA", name: "USA" },
-            ]}
+            choices={CITIES}
             onBlur={handleBlur}
             onChange={handleChange}
           />

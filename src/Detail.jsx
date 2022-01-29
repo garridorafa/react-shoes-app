@@ -15,6 +15,11 @@ export default function Detail() {
   const [sku, setSku] = useState("");
   const { data: product, error, loading } = useFetch(`products/${id}`);
 
+  const availableSizes = product?.skus.map((s) => ({
+    id: s.sku,
+    name: s.size,
+  }));
+
   if (loading) return <Spinner />;
   if (!product) return <PageNotFound />;
   if (error) throw error;
@@ -26,7 +31,7 @@ export default function Detail() {
       <p id="price">${product.price}</p>
       <Select
         label="What size?"
-        choices={product.skus.map((s) => ({ id: s.sku, name: s.size }))}
+        choices={availableSizes}
         onChange={(e) => setSku(e.target.value)}
       />
       <p>
