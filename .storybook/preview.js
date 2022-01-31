@@ -1,3 +1,6 @@
+import React from "react";
+import { MemoryRouter } from "react-router-dom";
+
 export const parameters = {
   actions: { argTypesRegex: "^on[A-Z].*" },
   controls: {
@@ -6,4 +9,8 @@ export const parameters = {
       date: /Date$/,
     },
   },
-}
+};
+
+export const decorators = [
+  (Story) => <MemoryRouter initialEntries={["/"]}>{Story()}</MemoryRouter>,
+];
