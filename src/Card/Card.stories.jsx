@@ -13,8 +13,8 @@ export const Standard = Template.bind({});
 
 Standard.args = {
   id: 1,
-  title: "zapa",
+  title: "Hiker",
   image: "shoe1.jpg",
-  price: 55.69,
+  price: 94.95,
   category: "shoes",
 };
