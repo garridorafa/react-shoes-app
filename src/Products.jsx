@@ -5,6 +5,7 @@ import useFetch from "./services/useFetch";
 import PageNotFound from "./PageNotFound";
 import Spinner from "./Spinner";
 import Select from "./Select";
+import Card from "./Card";
 
 const AVAILABLE_SIZES = [
   { id: "7", name: 7 },
@@ -21,16 +22,6 @@ export default function App() {
     error,
     loading,
   } = useFetch("products?category=" + category);
-
-  const renderProduct = (p) => (
-    <div key={p.id} className="product">
-      <Link to={`/${category}/${p.id}`}>
-        <img src={`/images/${p.image}`} alt={p.name} />
-        <h3>{p.name}</h3>
-        <p>${p.price}</p>
-      </Link>
-    </div>
-  );
 
   const filterProducts = size
     ? products.filter((product) =>
@@ -54,7 +45,17 @@ export default function App() {
         />
         {size && <h2>Found {filterProducts.length} items</h2>}
       </section>
-      <section id="products">{filterProducts.map(renderProduct)}</section>
+      <section id="products">
+        {filterProducts.map((p) => (
+          <Card
+            id={p.id}
+            title={p.name}
+            image={p.image}
+            price={p.price}
+            category={category}
+          />
+        ))}
+      </section>
     </>
   );
 }

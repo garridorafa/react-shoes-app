@@ -5,7 +5,7 @@ import "./Card.css";
 
 export default function Card({ id, title, image, price, category }) {
   return (
-    <div key={id || title} className="card">
+    <div className="card" key={id || title}>
       <Link to={`/${category}/${id}`}>
         <img src={`/images/${image}`} alt={title} />
         <h3>{title}</h3>
