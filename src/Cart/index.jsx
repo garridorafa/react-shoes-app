@@ -1,11 +1,11 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 
-import useFetchAll from "./services/useFetchAll";
-import { useCart } from "./cartContext";
-import Button from "./Button";
-import Spinner from "./Spinner";
-import Select from "./Select";
+import useFetchAll from "../services/useFetchAll";
+import { useCart } from "../cartContext";
+import Button from "../Button";
+import Spinner from "../Spinner";
+import Select from "../Select";
 
 const AVAILABLE_QUANTITIES = [
   { id: 1, name: "1" },

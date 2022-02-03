@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 
-import { useCart } from "./cartContext";
-import useFetch from "./services/useFetch";
-import Button from "./Button";
-import PageNotFound from "./PageNotFound";
-import Select from "./Select";
-import Spinner from "./Spinner";
+import { useCart } from "../cartContext";
+import useFetch from "../services/useFetch";
+import Button from "../Button";
+import PageNotFound from "../PageNotFound";
+import Select from "../Select";
+import Spinner from "../Spinner";
 
 export default function Detail() {
   const { dispatch } = useCart();

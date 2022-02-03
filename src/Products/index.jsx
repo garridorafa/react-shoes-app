@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import { Link, useParams } from "react-router-dom";
 
-import useFetch from "./services/useFetch";
-import PageNotFound from "./PageNotFound";
-import Spinner from "./Spinner";
-import Select from "./Select";
-import Card from "./Card";
+import useFetch from "../services/useFetch";
+import PageNotFound from "../PageNotFound";
+import Spinner from "../Spinner";
+import Select from "../Select";
+import Card from "../Card";
 
 const AVAILABLE_SIZES = [
   { id: "7", name: 7 },

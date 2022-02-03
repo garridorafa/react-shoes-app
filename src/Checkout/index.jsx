@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 
-import { saveShippingAddress } from "./services/shippingService";
-import Button from "./Button";
-import { useCart } from "./cartContext";
-import Select from "./Select";
+import { saveShippingAddress } from "../services/shippingService";
+import Button from "../Button";
+import { useCart } from "../cartContext";
+import Select from "../Select";
 
 const STATUS = {
   IDLE: "IDLE",
